@@ -8,4 +8,11 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     box-sizing: inherit;
   }
+
+  html {
+    font-size: 62.5%;
+    --brown: #854d27;
+    --orange: #dd7230;
+    --green: #71a033;
+  }
 `
