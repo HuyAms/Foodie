@@ -1,5 +1,4 @@
 export const theme = {
-  brown: 'var(--brown)',
-  orange: 'var(--orange)',
-  green: 'var(--green)',
+  primary: 'var(--colors-primary)',
+  background: 'var(--colors-background)',
 }

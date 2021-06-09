@@ -3,5 +3,5 @@ import { theme } from '../../theme/theme'
 
 export const Text = styled.div`
   font-size: 30px;
-  color: ${theme.green};
+  color: ${theme.primary};
 `
