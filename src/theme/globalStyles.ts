@@ -11,8 +11,18 @@ export const GlobalStyle = createGlobalStyle`
 
   html {
     font-size: 62.5%;
-    --brown: #854d27;
-    --orange: #dd7230;
-    --green: #71a033;
+  }
+
+  body[data-theme='light'] {
+    --colors-primary: deeppink;
+    --colors-background: white;
+  }
+  body[data-theme='dark'] {
+    --colors-primary: lightpink;
+    --colors-background: black;
+  }
+  
+  body {
+    background-color: var(--colors-background);
   }
 `
