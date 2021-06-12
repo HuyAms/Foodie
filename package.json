@@ -32,7 +32,8 @@
     "format": "npm run prettier -- --write",
     "check-format": "npm run prettier -- --list-different",
     "lint": "eslint --ignore-path .gitignore .",
-    "validate": "npm-run-all --parallel check-types check-format lint build",
+    "lint:css": "stylelint src/**/*.ts{,x}",
+    "validate": "npm-run-all --parallel check-types check-format lint lint:css build",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public"
   },
@@ -54,7 +55,8 @@
   },
   "lint-staged": {
     "*.+(js|ts|tsx)": [
-      "eslint"
+      "eslint",
+      "stylelint"
     ],
     "**/*.+(ts|tsx|js|jsx|json|css|md|mdx|html)": [
       "prettier --write",
@@ -84,6 +86,10 @@
     "husky": "^6.0.0",
     "lint-staged": "^11.0.0",
     "npm-run-all": "^4.1.5",
-    "prettier": "2.3.0"
+    "prettier": "2.3.0",
+    "stylelint": "^13.13.1",
+    "stylelint-config-recommended": "^5.0.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.10.0"
   }
 }
