@@ -35,7 +35,8 @@
     "lint:css": "stylelint src/**/*.ts{,x}",
     "validate": "npm-run-all --parallel check-types check-format lint lint:css build",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
