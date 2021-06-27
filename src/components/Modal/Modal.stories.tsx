@@ -17,15 +17,15 @@ export default {
   component: Modal,
 } as Meta
 
-const label = 'Modal label'
-const title = 'Modal title'
+const mockedLabel = 'Modal label'
+const mockedTitle = 'Modal title'
 
 export const Default = () => (
   <Modal>
     <ModalOpenButton>
       <button>Open</button>
     </ModalOpenButton>
-    <ModalContents aria-label={label} title={title}>
+    <ModalContents aria-label={mockedLabel} title={mockedTitle}>
       <p>Modal content</p>
     </ModalContents>
   </Modal>

@@ -85,6 +85,7 @@
     "@storybook/node-logger": "^6.2.9",
     "@storybook/preset-create-react-app": "^3.1.7",
     "@storybook/react": "^6.2.9",
+    "@storybook/testing-react": "^0.0.18",
     "@types/styled-components": "^5.1.10",
     "husky": "^6.0.0",
     "lint-staged": "^11.0.0",
