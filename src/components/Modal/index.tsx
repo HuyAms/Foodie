@@ -1,6 +1,7 @@
 import React from 'react'
-import Dialog, { DialogProps } from '@reach/dialog'
+import { DialogProps } from '@reach/dialog'
 import VisuallyHidden from '@reach/visually-hidden'
+import { Dialog, CircleButton } from './style'
 import '@reach/dialog/styles.css'
 
 type ModalContextType = [isOpen: boolean, setIsOpen: (isOpen: boolean) => void]
@@ -68,13 +69,15 @@ interface ModalProps extends DialogProps {
 function ModalContents({ title, ...props }: ModalProps) {
   return (
     <ModalContentsBase {...props}>
-      <ModalDismissButton>
-        <button>
-          <VisuallyHidden>Close</VisuallyHidden>
-          <span aria-hidden>×</span>
-        </button>
-      </ModalDismissButton>
-      <h3>{title}</h3>
+      <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+        <ModalDismissButton>
+          <CircleButton>
+            <VisuallyHidden>Close</VisuallyHidden>
+            <span aria-hidden>×</span>
+          </CircleButton>
+        </ModalDismissButton>
+      </div>
+      <h3 style={{ textAlign: 'center', fontSize: '3.2rem' }}>{title}</h3>
       {props.children}
     </ModalContentsBase>
   )

@@ -14,15 +14,18 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body[data-theme='light'] {
-    --colors-primary: deeppink;
+    --colors-primary: #434449;
     --colors-background: white;
+    --colors-gray10: #f1f1f4;
   }
   body[data-theme='dark'] {
-    --colors-primary: lightpink;
-    --colors-background: black;
+    --colors-primary: white;
+    --colors-background: #434449;
+    --colors-gray10: #f1f1f4;
   }
   
   body {
     background-color: var(--colors-background);
+    font-size: 1.6rem;
   }
 `
