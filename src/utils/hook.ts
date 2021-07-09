@@ -112,24 +112,27 @@ export function useAsync<TResult, TError>(
 
   const { data, error, status } = state as AsyncState<TResult, TError>
 
-  const run = React.useCallback((promise: Promise<TResult>) => {
-    if (!promise || !promise.then) {
-      throw new Error(
-        `The argument passed to useAsync().run must be a promise. Maybe a function that's passed isn't returning anything?`
-      )
-    }
-
-    dispatch({ type: 'pending' })
-
-    promise.then(
-      (data) => {
-        dispatch({ type: 'resolved', data })
-      },
-      (error) => {
-        dispatch({ type: 'rejected', error })
+  const run = React.useCallback(
+    (promise: Promise<TResult>) => {
+      if (!promise || !promise.then) {
+        throw new Error(
+          `The argument passed to useAsync().run must be a promise. Maybe a function that's passed isn't returning anything?`
+        )
       }
-    )
-  }, [])
+
+      dispatch({ type: 'pending' })
+
+      promise.then(
+        (data) => {
+          dispatch({ type: 'resolved', data })
+        },
+        (error) => {
+          dispatch({ type: 'rejected', error })
+        }
+      )
+    },
+    [dispatch]
+  )
 
   return {
     isIdle: status === 'idle',
