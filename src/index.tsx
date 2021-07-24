@@ -4,13 +4,16 @@ import App from './App'
 import reportWebVitals from './reportWebVitals'
 import { GlobalStyle } from './theme/globalStyles'
 import { initializeFirebase } from './utils/firebase'
+import { AuthProvider } from './context/auth-context'
 
 initializeFirebase()
 
 ReactDOM.render(
   <React.StrictMode>
     <GlobalStyle />
-    <App />
+    <AuthProvider>
+      <App />
+    </AuthProvider>
   </React.StrictMode>,
   document.getElementById('root')
 )
