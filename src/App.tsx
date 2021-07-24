@@ -1,8 +1,10 @@
 import React from 'react'
 import UnAuthenticatedApp from './components/UnAuthenticatedApp'
 import * as auth from './auth-provider'
-import { UserCredential } from './auth-provider'
+import { getUserCredential, UserCredential } from './auth-provider'
 import AuthenticatedApp from './components/AuthenticatedApp'
+import { useAsync } from './utils/hook'
+import FullPageSpinner from './components/FullPageSpinner'
 
 function App() {
   const [theme] = React.useState('light')
@@ -11,7 +13,19 @@ function App() {
     document.body.dataset.theme = theme
   }, [theme])
 
-  const [user, setUser] = React.useState<UserCredential | null>(null)
+  const {
+    data: user,
+    run,
+    error,
+    isLoading,
+    isIdle,
+    isError,
+    setData: setUser,
+  } = useAsync<UserCredential | null, Error>()
+
+  React.useEffect(() => {
+    run(getUserCredential())
+  }, [])
 
   const login = (email: string, password: string) =>
     auth.login(email, password).then((u) => setUser(u))
@@ -20,6 +34,27 @@ function App() {
   const logout = () => {
     auth.logout()
     setUser(null)
+  }
+
+  if (isLoading || isIdle) {
+    return <FullPageSpinner />
+  }
+
+  if (isError) {
+    return (
+      <div
+        css={{
+          height: '100vh',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <p>Uh oh... There's a problem. Try refreshing the app.</p>
+        <pre>{error?.message}</pre>
+      </div>
+    )
   }
 
   return (

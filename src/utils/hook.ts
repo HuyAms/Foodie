@@ -112,6 +112,20 @@ export function useAsync<TResult, TError>(
 
   const { data, error, status } = state as AsyncState<TResult, TError>
 
+  const setData = React.useCallback(
+    (data: TResult) => {
+      dispatch({ type: 'resolved', data })
+    },
+    [dispatch]
+  )
+
+  const setError = React.useCallback(
+    (error: TError) => {
+      dispatch({ type: 'rejected', error })
+    },
+    [dispatch]
+  )
+
   const run = React.useCallback(
     (promise: Promise<TResult>) => {
       if (!promise || !promise.then) {
@@ -124,10 +138,10 @@ export function useAsync<TResult, TError>(
 
       promise.then(
         (data) => {
-          dispatch({ type: 'resolved', data })
+          setData(data)
         },
         (error) => {
-          dispatch({ type: 'rejected', error })
+          setError(error)
         }
       )
     },
@@ -139,6 +153,8 @@ export function useAsync<TResult, TError>(
     isLoading: status === 'pending',
     isError: status === 'rejected',
     isSuccess: status === 'resolved',
+    setData,
+    setError,
     data,
     error,
     status,

@@ -5,8 +5,9 @@ const localStorageKey = '_localStorageKey_'
 
 const authURL = process.env.REACT_APP_AUTH_URL
 
-export async function getToken() {
-  return window.localStorage.getItem(localStorageKey)
+export async function getUserCredential() {
+  const data = window.localStorage.getItem(localStorageKey)
+  return data ? JSON.parse(data) : null
 }
 
 export type UserCredential = app.auth.UserCredential
