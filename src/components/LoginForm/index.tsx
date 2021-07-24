@@ -1,5 +1,9 @@
 import React from 'react'
 import { FormGroup, Input, LoginFormWrapper } from './style'
+import { useAsync } from '../../utils/hook'
+import { UserCredential } from '../../auth-provider'
+import ErrorMessage from '../ErrorMessage'
+import Spinner from '../Spinner'
 
 interface FormElements extends HTMLFormControlsCollection {
   username: HTMLInputElement
@@ -12,16 +16,18 @@ interface LoginFormElement extends HTMLFormElement {
 
 export interface Props {
   submitButton: React.ReactElement
+  onSubmit: (email: string, password: string) => Promise<any>
 }
 
-function LoginForm({ submitButton }: Props) {
+function LoginForm({ onSubmit, submitButton }: Props) {
+  const { isLoading, isError, error, run } = useAsync<UserCredential, Error>()
+
   function handleSubmit(event: React.FormEvent<LoginFormElement>) {
     event.preventDefault()
 
     const { username, password } = event.currentTarget.elements
 
-    console.log('username: ', username.value)
-    console.log('password: ', password.value)
+    run(onSubmit(username.value, password.value))
   }
 
   return (
@@ -40,9 +46,11 @@ function LoginForm({ submitButton }: Props) {
           { type: 'submit' },
           ...(Array.isArray(submitButton.props.children)
             ? submitButton.props.children
-            : [submitButton.props.children])
+            : [submitButton.props.children]),
+          isLoading ? <Spinner css={{ marginLeft: 5 }} /> : null
         )}
       </div>
+      {isError ? <ErrorMessage error={error} /> : null}
     </LoginFormWrapper>
   )
 }

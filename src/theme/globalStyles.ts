@@ -1,4 +1,10 @@
-import { createGlobalStyle } from 'styled-components/macro'
+import { createGlobalStyle, css } from 'styled-components/macro'
+
+const sharedColors = css`
+  --colors-gray10: #f1f1f4;
+  --colors-indigo: #3f51b5;
+  --colors-white: #ffff;
+`
 
 export const GlobalStyle = createGlobalStyle`
   *,
@@ -16,12 +22,12 @@ export const GlobalStyle = createGlobalStyle`
   body[data-theme='light'] {
     --colors-primary: #434449;
     --colors-background: white;
-    --colors-gray10: #f1f1f4;
+    ${sharedColors}
   }
   body[data-theme='dark'] {
     --colors-primary: white;
     --colors-background: #434449;
-    --colors-gray10: #f1f1f4;
+    ${sharedColors}
   }
   
   body {

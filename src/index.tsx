@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 import { GlobalStyle } from './theme/globalStyles'
+import { initializeFirebase } from './utils/firebase'
+
+initializeFirebase()
 
 ReactDOM.render(
   <React.StrictMode>

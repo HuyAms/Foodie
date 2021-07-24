@@ -1,3 +1,6 @@
+import { createUser, signInUser, signOut } from './utils/firebase'
+import app from 'firebase/app'
+
 const localStorageKey = '_localStorageKey_'
 
 const authURL = process.env.REACT_APP_AUTH_URL
@@ -6,33 +9,24 @@ export async function getToken() {
   return window.localStorage.getItem(localStorageKey)
 }
 
-export interface UserCredential {
-  username: string
-  password: string
+export type UserCredential = app.auth.UserCredential
+
+export function handleUserResponse(data: UserCredential) {
+  window.localStorage.setItem(localStorageKey, JSON.stringify(data))
+
+  return data
 }
 
-export interface AuthData {
-  user: {
-    token: string
-  }
-}
-
-export function handleUserResponse({ user }: AuthData) {
-  window.localStorage.setItem(localStorageKey, user.token)
-
-  return user
-}
-
-export async function login({ username, password }: UserCredential) {
-  return client('login', { username, password }).then(handleUserResponse)
+export async function login(email: string, password: string) {
+  return signInUser(email, password).then(handleUserResponse)
 }
 
 export async function logout() {
-  window.localStorage.removeItem(localStorageKey)
+  return signOut().then(() => window.localStorage.removeItem(localStorageKey))
 }
 
-export async function register({ username, password }: UserCredential) {
-  return client('register', { username, password }).then(handleUserResponse)
+export async function register(email: string, password: string) {
+  return createUser(email, password).then(handleUserResponse)
 }
 
 async function client(endpoint: string, data: object) {
