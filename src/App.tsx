@@ -1,12 +1,32 @@
 import React from 'react'
-import { Home } from './page/Home'
-import ThemeToggler from './components/ThemeToggler'
+import { useAuth } from './context/auth-context'
+import FullPageSpinner from './components/FullPageSpinner'
+
+const AuthenticatedApp = React.lazy(
+  () => import(/* webpackPrefetch: true */ './components/AuthenticatedApp')
+)
+const UnAuthenticatedApp = React.lazy(
+  () => import('./components/UnAuthenticatedApp')
+)
 
 function App() {
+  const [theme] = React.useState('light')
+
+  const { login, register, logout, user } = useAuth()
+
+  React.useEffect(() => {
+    document.body.dataset.theme = theme
+  }, [theme])
+
   return (
     <>
-      <ThemeToggler />
-      <Home />
+      <React.Suspense fallback={<FullPageSpinner />}>
+        {user ? (
+          <AuthenticatedApp logout={logout} />
+        ) : (
+          <UnAuthenticatedApp login={login} register={register} />
+        )}
+      </React.Suspense>
     </>
   )
 }

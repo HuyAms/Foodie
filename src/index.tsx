@@ -2,13 +2,15 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
-import { GlobalStyle } from './theme/globalStyles'
+import { initializeFirebase } from './utils/firebase'
+import AppProviders from './context/AppProviders'
+
+initializeFirebase()
 
 ReactDOM.render(
-  <React.StrictMode>
-    <GlobalStyle />
+  <AppProviders>
     <App />
-  </React.StrictMode>,
+  </AppProviders>,
   document.getElementById('root')
 )
 

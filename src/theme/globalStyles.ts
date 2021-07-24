@@ -1,4 +1,10 @@
-import { createGlobalStyle } from 'styled-components/macro'
+import { createGlobalStyle, css } from 'styled-components/macro'
+
+const sharedColors = css`
+  --colors-gray10: #f1f1f4;
+  --colors-indigo: #3f51b5;
+  --colors-white: #ffff;
+`
 
 export const GlobalStyle = createGlobalStyle`
   *,
@@ -14,15 +20,18 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body[data-theme='light'] {
-    --colors-primary: deeppink;
+    --colors-primary: #434449;
     --colors-background: white;
+    ${sharedColors}
   }
   body[data-theme='dark'] {
-    --colors-primary: lightpink;
-    --colors-background: black;
+    --colors-primary: white;
+    --colors-background: #434449;
+    ${sharedColors}
   }
   
   body {
     background-color: var(--colors-background);
+    font-size: 1.6rem;
   }
 `

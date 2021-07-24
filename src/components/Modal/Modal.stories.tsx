@@ -1,8 +1,6 @@
-// Button.stories.tsx
-
 import React from 'react'
 
-import { Meta, Story } from '@storybook/react'
+import { Meta } from '@storybook/react'
 
 import {
   Modal,
