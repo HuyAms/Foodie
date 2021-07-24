@@ -2,19 +2,15 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
-import { GlobalStyle } from './theme/globalStyles'
 import { initializeFirebase } from './utils/firebase'
-import { AuthProvider } from './context/auth-context'
+import AppProviders from './context/AppProviders'
 
 initializeFirebase()
 
 ReactDOM.render(
-  <React.StrictMode>
-    <GlobalStyle />
-    <AuthProvider>
-      <App />
-    </AuthProvider>
-  </React.StrictMode>,
+  <AppProviders>
+    <App />
+  </AppProviders>,
   document.getElementById('root')
 )
 
