@@ -145,7 +145,7 @@ export function useAsync<TResult, TError>(
         }
       )
     },
-    [dispatch]
+    [dispatch, setError, setData]
   )
 
   return {

@@ -1,7 +1,13 @@
 import React from 'react'
-import UnAuthenticatedApp from './components/UnAuthenticatedApp'
-import AuthenticatedApp from './components/AuthenticatedApp'
 import { useAuth } from './context/auth-context'
+import FullPageSpinner from './components/FullPageSpinner'
+
+const AuthenticatedApp = React.lazy(
+  () => import(/* webpackPrefetch: true */ './components/AuthenticatedApp')
+)
+const UnAuthenticatedApp = React.lazy(
+  () => import('./components/UnAuthenticatedApp')
+)
 
 function App() {
   const [theme] = React.useState('light')
@@ -14,11 +20,13 @@ function App() {
 
   return (
     <>
-      {user ? (
-        <AuthenticatedApp logout={logout} />
-      ) : (
-        <UnAuthenticatedApp login={login} register={register} />
-      )}
+      <React.Suspense fallback={<FullPageSpinner />}>
+        {user ? (
+          <AuthenticatedApp logout={logout} />
+        ) : (
+          <UnAuthenticatedApp login={login} register={register} />
+        )}
+      </React.Suspense>
     </>
   )
 }
