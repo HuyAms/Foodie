@@ -8,6 +8,8 @@ const config = {
   storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
 }
 
+initializeFirebase()
+
 export function initializeFirebase() {
   app.initializeApp(config)
 }

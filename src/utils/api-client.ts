@@ -29,7 +29,7 @@ export function client(
     .then(async (response) => {
       const data = await response.json()
 
-      if (response.status === 400) {
+      if (response.status === 401) {
         await auth.logout()
 
         // refresh page
