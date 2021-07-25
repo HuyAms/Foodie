@@ -2,10 +2,6 @@ import { client } from '../api-client'
 import { server, rest } from '../../test/server/test-server'
 import { RestRequest } from 'msw'
 
-beforeAll(() => server.listen())
-afterAll(() => server.close())
-afterEach(() => server.resetHandlers())
-
 const apiURL = process.env.REACT_APP_API_URL
 
 test('make GET requests to the given endpoint', async () => {
