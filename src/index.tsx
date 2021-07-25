@@ -2,10 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
-import { initializeFirebase } from './utils/firebase'
 import AppProviders from './context/AppProviders'
-
-initializeFirebase()
 
 ReactDOM.render(
   <AppProviders>
