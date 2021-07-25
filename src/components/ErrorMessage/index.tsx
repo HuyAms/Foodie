@@ -7,7 +7,7 @@ interface Props {
 function ErrorMessage(props: Props) {
   const { error } = props
 
-  return <p>{error?.message}</p>
+  return <p role="alert">{error?.message}</p>
 }
 
 export default ErrorMessage

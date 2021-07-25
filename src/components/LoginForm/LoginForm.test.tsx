@@ -30,9 +30,9 @@ test('submitting the form calls onSubmit with username and password', async () =
 })
 
 test('show an error message when fails to login', async () => {
-  const errorText = faker.lorem.text()
-
-  const handleSubmit = jest.fn(() => Promise.reject(Error(errorText)))
+  const handleSubmit = jest.fn(() =>
+    Promise.reject(Error('There is an error while trying to login'))
+  )
 
   render(
     <LoginForm submitButton={<button>Submit</button>} onSubmit={handleSubmit} />
@@ -53,5 +53,7 @@ test('show an error message when fails to login', async () => {
 
   await waitForLoadingToFinish()
 
-  screen.getByText(errorText)
+  expect(screen.getByRole('alert').textContent).toMatchInlineSnapshot(
+    `"There is an error while trying to login"`
+  )
 })
