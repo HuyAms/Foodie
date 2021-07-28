@@ -12,7 +12,11 @@ const StyledSpinner = styled(FaSpinner)`
 `
 
 function Spinner() {
-  return <StyledSpinner />
+  return (
+    <div aria-label="loading">
+      <StyledSpinner />
+    </div>
+  )
 }
 
 export default Spinner

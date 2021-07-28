@@ -1,7 +1,7 @@
 import { createUser, signInUser, signOut } from './utils/firebase'
 import app from 'firebase/app'
 
-const localStorageKey = '_localStorageKey_'
+export const localStorageKey = '_localStorageKey_'
 
 const authURL = process.env.REACT_APP_AUTH_URL
 

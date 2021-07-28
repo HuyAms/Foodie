@@ -6,7 +6,7 @@ import ErrorMessage from '../ErrorMessage'
 import Spinner from '../Spinner'
 
 interface FormElements extends HTMLFormControlsCollection {
-  username: HTMLInputElement
+  email: HTMLInputElement
   password: HTMLInputElement
 }
 
@@ -25,16 +25,16 @@ function LoginForm({ onSubmit, submitButton }: Props) {
   function handleSubmit(event: React.FormEvent<LoginFormElement>) {
     event.preventDefault()
 
-    const { username, password } = event.currentTarget.elements
+    const { email, password } = event.currentTarget.elements
 
-    run(onSubmit(username.value, password.value))
+    run(onSubmit(email.value, password.value))
   }
 
   return (
     <LoginFormWrapper onSubmit={handleSubmit}>
       <FormGroup>
-        <label htmlFor="username">Username</label>
-        <Input id="username" type="text" />
+        <label htmlFor="email">Email</label>
+        <Input id="email" type="text" />
       </FormGroup>
       <FormGroup>
         <label htmlFor="password">Password</label>
