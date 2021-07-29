@@ -30,6 +30,12 @@ interface IdleState {
   error: null
 }
 
+const ile: IdleState = {
+  status: 'idle',
+  data: null,
+  error: null,
+}
+
 interface PendingState {
   status: 'pending'
   data: null
@@ -136,12 +142,14 @@ export function useAsync<TResult, TError>(
 
       dispatch({ type: 'pending' })
 
-      promise.then(
+      return promise.then(
         (data) => {
           setData(data)
+          return data
         },
         (error) => {
           setError(error)
+          return Promise.reject(error)
         }
       )
     },
