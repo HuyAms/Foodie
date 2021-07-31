@@ -3,8 +3,6 @@ import app from 'firebase/app'
 
 export const localStorageKey = '_localStorageKey_'
 
-const authURL = process.env.REACT_APP_AUTH_URL
-
 export async function getUserCredential() {
   const data = window.localStorage.getItem(localStorageKey)
   return data ? JSON.parse(data) : null
@@ -30,21 +28,23 @@ export async function register(email: string, password: string) {
   return createUser(email, password).then(handleUserResponse)
 }
 
-async function client(endpoint: string, data: object) {
-  const config = {
-    method: 'POST',
-    body: JSON.stringify(data),
-    headers: { 'Content-Type': 'application/json' },
-  }
+// const authURL = process.env.REACT_APP_AUTH_URL
 
-  return window
-    .fetch(`${authURL}/${endpoint}`, config)
-    .then(async (response) => {
-      const data = await response.json()
-      if (response.ok) {
-        return data
-      } else {
-        return Promise.reject(data)
-      }
-    })
-}
+// async function client(endpoint: string, data: object) {
+//   const config = {
+//     method: 'POST',
+//     body: JSON.stringify(data),
+//     headers: { 'Content-Type': 'application/json' },
+//   }
+//
+//   return window
+//     .fetch(`${authURL}/${endpoint}`, config)
+//     .then(async (response) => {
+//       const data = await response.json()
+//       if (response.ok) {
+//         return data
+//       } else {
+//         return Promise.reject(data)
+//       }
+//     })
+// }

@@ -7,14 +7,10 @@ import {
   AuthenticationSection,
   Heading,
 } from './style'
+import { useAuth } from '../../context/auth-context'
 
-export interface Props {
-  login: (email: string, password: string) => Promise<void>
-  register: (email: string, password: string) => Promise<void>
-}
-
-function UnAuthenticatedApp(props: Props) {
-  const { login, register } = props
+function UnAuthenticatedApp() {
+  const { login, register } = useAuth()
 
   return (
     <UnAuthenticatedAppContainer>

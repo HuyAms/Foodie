@@ -1,17 +1,10 @@
 import React from 'react'
+import Header from '../Header'
 
-interface Props {
-  logout: () => void
-}
-
-function AuthenticatedApp({ logout }: Props) {
-  function handleLogout() {
-    logout()
-  }
-
+function AuthenticatedApp() {
   return (
     <div>
-      <button onClick={handleLogout}>Logout</button>
+      <Header />
       <p>this is authenticated app</p>
     </div>
   )
