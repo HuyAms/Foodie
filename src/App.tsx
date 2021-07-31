@@ -12,7 +12,7 @@ const UnAuthenticatedApp = React.lazy(
 function App() {
   const [theme] = React.useState('light')
 
-  const { login, register, logout, user } = useAuth()
+  const { user } = useAuth()
 
   React.useEffect(() => {
     document.body.dataset.theme = theme
@@ -21,11 +21,7 @@ function App() {
   return (
     <>
       <React.Suspense fallback={<FullPageSpinner />}>
-        {user ? (
-          <AuthenticatedApp logout={logout} />
-        ) : (
-          <UnAuthenticatedApp login={login} register={register} />
-        )}
+        {user ? <AuthenticatedApp /> : <UnAuthenticatedApp />}
       </React.Suspense>
     </>
   )

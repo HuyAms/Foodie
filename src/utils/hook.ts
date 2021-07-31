@@ -30,12 +30,6 @@ interface IdleState {
   error: null
 }
 
-const ile: IdleState = {
-  status: 'idle',
-  data: null,
-  error: null,
-}
-
 interface PendingState {
   status: 'pending'
   data: null

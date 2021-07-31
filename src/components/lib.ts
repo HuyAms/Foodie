@@ -10,3 +10,9 @@ export const Button = styled.button`
   color: black;
   cursor: pointer;
 `
+
+export const Input = styled.input`
+  border: 1px solid ${theme.gray10};
+  padding: 8px 24px;
+  outline: none;
+`
