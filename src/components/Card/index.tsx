@@ -1,5 +1,5 @@
 import React from 'react'
-import { CardWrapper, Image, Body, Title } from './style'
+import { CardWrapper, Image, Body, Title, ImageWrapper } from './style'
 
 interface Props {
   title: string
@@ -10,7 +10,9 @@ interface Props {
 function Card({ title, description, imgUrl }: Props) {
   return (
     <CardWrapper>
-      <Image src={imgUrl} alt={title} />
+        <ImageWrapper>
+            <Image src={imgUrl} alt={title} />
+        </ImageWrapper>
       <Body>
         <Title>{title}</Title>
         <p>{description}</p>

@@ -3,8 +3,17 @@ import { useAsync } from '../../utils/hook'
 import { client } from '../../utils/api-client'
 import FullPageSpinner from '../../components/FullPageSpinner'
 import Card from '../../components/Card'
-import { FoodMenuWrapper, HomePageLayout } from './style'
+import {
+  FoodMenuWrapper,
+  HomePageLayout,
+  NotFoundContainer,
+  NotFoundText,
+  NotFoundImage,
+  Heading,
+} from './style'
 import ErrorMessage from '../../components/ErrorMessage'
+import { useLocation } from 'react-router-dom'
+import NotFoundImg from '../../assets/notfound.png'
 
 export interface IFoodItem {
   id: number
@@ -25,9 +34,13 @@ function Home() {
   const { data, isLoading, isError, error, run } =
     useAsync<FoodMenuResponse, Error>()
 
+  const searchParams = new URLSearchParams(useLocation().search)
+  const query = searchParams.get('q') as string
+
   React.useEffect(() => {
-    run(client('search?query=sushi'))
-  }, [])
+    const search = query ? query : ' sushi'
+    run(client(`search?query=${search}`))
+  }, [run, query])
 
   function renderFoodMenu() {
     if (isLoading) {
@@ -38,12 +51,29 @@ function Home() {
       return <ErrorMessage error={error} />
     }
 
+    if (data?.totalMenuItems === 0) {
+      return (
+        <NotFoundContainer>
+          <NotFoundImage src={NotFoundImg} alt="not found" />
+          <NotFoundText>No results found</NotFoundText>
+        </NotFoundContainer>
+      )
+    }
+
     return (
-      <FoodMenuWrapper>
-        {data?.menuItems.map(({ title, image, restaurantChain }) => (
-          <Card title={title} description={restaurantChain} imgUrl={image} />
-        ))}
-      </FoodMenuWrapper>
+      <>
+        <Heading>Popular right now</Heading>
+        <FoodMenuWrapper>
+          {data?.menuItems.map(({ id, title, image, restaurantChain }) => (
+            <Card
+              key={id}
+              title={title}
+              description={restaurantChain}
+              imgUrl={image}
+            />
+          ))}
+        </FoodMenuWrapper>
+      </>
     )
   }
 
