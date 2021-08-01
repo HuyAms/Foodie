@@ -10,6 +10,7 @@ export function client(
   { data, token, headers: customHeaders, ...customConfig }: ClientConfig = {}
 ) {
   const apiUrl = process.env.REACT_APP_API_URL
+  const apiKey = process.env.REACT_APP_API_KEY
 
   const config: RequestInit = {
     method: data ? 'POST' : 'GET',
@@ -18,14 +19,14 @@ export function client(
       // @ts-ignore
       Authorization: token ? `Bearer ${token}` : undefined,
       // @ts-ignore
-      'Content-Type': data ? 'application/json' : undefined,
+      'Content-Type': 'application/json',
       ...customHeaders,
     },
     ...customConfig,
   }
 
   return window
-    .fetch(`${apiUrl}/${endpoint}`, config)
+    .fetch(`${apiUrl}/${endpoint}&apiKey=${apiKey}`, config)
     .then(async (response) => {
       const data = await response.json()
 

@@ -1,11 +1,12 @@
 import React from 'react'
 import Header from '../Header'
+import Home from '../../page/Home'
 
 function AuthenticatedApp() {
   return (
     <div>
       <Header />
-      <p>this is authenticated app</p>
+      <Home />
     </div>
   )
 }

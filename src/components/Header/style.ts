@@ -10,8 +10,16 @@ export const Header = styled.header`
   border-bottom: 1px solid ${theme.gray10};
 `
 
-export const Logo = styled.div`
+export const Logo = styled.a`
   font-size: 28px;
+
+  &:link,
+  &:visited,
+  &:active {
+    color: black;
+  }
+
+  text-decoration: none;
 
   &:hover {
     cursor: pointer;
