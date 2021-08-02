@@ -139,11 +139,9 @@ export function useAsync<TResult, TError>(
       return promise.then(
         (data) => {
           setData(data)
-          return data
         },
         (error) => {
           setError(error)
-          return Promise.reject(error)
         }
       )
     },

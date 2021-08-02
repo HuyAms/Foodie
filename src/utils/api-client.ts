@@ -25,23 +25,29 @@ export function client(
     ...customConfig,
   }
 
-  return window
-    .fetch(`${apiUrl}/${endpoint}&apiKey=${apiKey}`, config)
-    .then(async (response) => {
-      const data = await response.json()
+  if (!apiKey) {
+    throw Error('Please add api key to .env file')
+  }
 
-      if (response.status === 401) {
-        await auth.logout()
+  const urlObject = new URL(`${apiUrl}/${endpoint}`)
+  urlObject.searchParams.append('apiKey', apiKey)
+  const { href } = urlObject
 
-        // refresh page
-        window.location.reload()
-        return Promise.reject({ message: 'Please re-authenticate.' })
-      }
+  return window.fetch(href, config).then(async (response) => {
+    const data = await response.json()
 
-      if (response.ok) {
-        return data
-      } else {
-        return Promise.reject(data)
-      }
-    })
+    if (response.status === 401) {
+      await auth.logout()
+
+      // refresh page
+      window.location.reload()
+      return Promise.reject({ message: 'Please re-authenticate.' })
+    }
+
+    if (response.ok) {
+      return data
+    } else {
+      return Promise.reject(data)
+    }
+  })
 }
