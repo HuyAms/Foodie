@@ -30,9 +30,13 @@ interface FoodMenuResponse {
   menuItems: IFoodItem[]
 }
 
+interface ServerError {
+  message: string
+}
+
 function Home() {
   const { data, isLoading, isError, error, run } =
-    useAsync<FoodMenuResponse, Error>()
+    useAsync<FoodMenuResponse, ServerError>()
 
   const searchParams = new URLSearchParams(useLocation().search)
   const query = searchParams.get('q') as string
@@ -48,7 +52,7 @@ function Home() {
     }
 
     if (isError) {
-      return <ErrorMessage error={error} />
+      return error ? <ErrorMessage message={error.message} /> : null
     }
 
     if (data?.totalMenuItems === 0) {
@@ -65,12 +69,13 @@ function Home() {
         <Heading>Popular right now</Heading>
         <FoodMenuWrapper>
           {data?.menuItems.map(({ id, title, image, restaurantChain }) => (
-            <Card
-              key={id}
-              title={title}
-              description={restaurantChain}
-              imgUrl={image}
-            />
+            <li key={id}>
+              <Card
+                title={title}
+                description={restaurantChain}
+                imgUrl={image}
+              />
+            </li>
           ))}
         </FoodMenuWrapper>
       </>

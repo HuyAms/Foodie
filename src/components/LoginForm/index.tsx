@@ -50,7 +50,7 @@ function LoginForm({ onSubmit, submitButton }: Props) {
           isLoading ? <Spinner css={{ marginLeft: 5 }} /> : null
         )}
       </div>
-      {isError ? <ErrorMessage error={error} /> : null}
+      {isError ? <ErrorMessage message={error?.message || ''} /> : null}
     </LoginFormWrapper>
   )
 }
