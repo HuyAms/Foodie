@@ -1,0 +1,111 @@
+{
+  "type": "menuItem",
+  "menuItems": [
+    {
+      "id": 360812,
+      "title": "Lunch Pairing, Spicy Tuna Roll and Chang's Crisp Salad",
+      "image": "https://images.spoonacular.com/file/wximages/360812-312x231.jpg",
+      "imageType": "jpg",
+      "restaurantChain": "PF Chang's",
+      "servingSize": null,
+      "readableServingSize": null,
+      "servings": { "number": 1, "size": null, "unit": null }
+    },
+    {
+      "id": 360798,
+      "title": "Lunch Pairing, California Roll and Chang's Crisp Salad",
+      "image": "https://images.spoonacular.com/file/wximages/360798-312x231.jpg",
+      "imageType": "jpg",
+      "restaurantChain": "PF Chang's",
+      "servingSize": null,
+      "readableServingSize": null,
+      "servings": { "number": 1, "size": null, "unit": null }
+    },
+    {
+      "id": 360896,
+      "title": "California Roll",
+      "image": "https://images.spoonacular.com/file/wximages/360896-312x231.jpg",
+      "imageType": "jpg",
+      "restaurantChain": "PF Chang's",
+      "servingSize": null,
+      "readableServingSize": null,
+      "servings": { "number": 1, "size": null, "unit": null }
+    },
+    {
+      "id": 241026,
+      "title": "Tuna Roll",
+      "image": "https://images.spoonacular.com/file/wximages/241026-312x231.jpg",
+      "imageType": "jpg",
+      "restaurantChain": "Friendly's",
+      "servingSize": "1 sandwich",
+      "readableServingSize": "1 sandwich",
+      "servings": { "number": 1, "size": 1, "unit": "sandwich" }
+    },
+    {
+      "id": 360902,
+      "title": "Spicy Tuna Roll",
+      "image": "https://images.spoonacular.com/file/wximages/360902-312x231.jpg",
+      "imageType": "jpg",
+      "restaurantChain": "PF Chang's",
+      "servingSize": null,
+      "readableServingSize": null,
+      "servings": { "number": 1, "size": null, "unit": null }
+    },
+    {
+      "id": 351264,
+      "title": "PP - Sushi - Combo",
+      "image": "https://spoonacular.com/menuItemImages/sushi-rolls.jpg",
+      "imageType": "jpg",
+      "restaurantChain": "Kona Grill",
+      "servingSize": "1 serving",
+      "readableServingSize": "1 serving",
+      "servings": { "number": 1, "size": 1, "unit": "serving" }
+    },
+    {
+      "id": 378740,
+      "title": "Sushi Sampler, Tuna",
+      "image": "https://spoonacular.com/menuItemImages/tuna-sushi-roll.jpg",
+      "imageType": "jpg",
+      "restaurantChain": "Benihana",
+      "servingSize": "17.01grams",
+      "readableServingSize": "17.01grams",
+      "servings": { "number": 1, "size": 17.01, "unit": "grams" }
+    },
+    {
+      "id": 378738,
+      "title": "Sushi Sampler - Shrimp",
+      "image": "https://spoonacular.com/menuItemImages/sushi-rolls.jpg",
+      "imageType": "jpg",
+      "restaurantChain": "Benihana",
+      "servingSize": "9.07grams",
+      "readableServingSize": "9.07grams",
+      "servings": { "number": 1, "size": 9.07, "unit": "grams" }
+    },
+    {
+      "id": 378735,
+      "title": "Sushi Sampler - Salmon",
+      "image": "https://spoonacular.com/menuItemImages/sushi-rolls.jpg",
+      "imageType": "jpg",
+      "restaurantChain": "Benihana",
+      "servingSize": "17.01grams",
+      "readableServingSize": "17.01grams",
+      "servings": { "number": 1, "size": 17.01, "unit": "grams" }
+    },
+    {
+      "id": 378836,
+      "title": "Sushi Combination, Eel",
+      "image": "https://spoonacular.com/menuItemImages/sushi-rolls.jpg",
+      "imageType": "jpg",
+      "restaurantChain": "Benihana",
+      "servingSize": "17.01grams",
+      "readableServingSize": "17.01grams",
+      "servings": { "number": 1, "size": 17.01, "unit": "grams" }
+    }
+  ],
+  "offset": 0,
+  "number": 10,
+  "totalMenuItems": 138,
+  "processingTimeMs": 23,
+  "expires": 1628067277665,
+  "isStale": false
+}

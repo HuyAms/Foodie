@@ -34,9 +34,9 @@ interface Options extends Omit<RenderOptions, 'queries'> {
 
 async function render(
   ui: React.ReactElement,
-  { user, route, ...renderOptions }: Options = {}
+  { user, route = '/', ...renderOptions }: Options = {}
 ) {
-  // window.history.pushState({}, 'Test page', route)
+  window.history.pushState({}, 'Test page', route)
   //
   // // pass null if need unauthenticated app
   user = typeof user === 'undefined' ? loginAsUser() : user

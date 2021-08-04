@@ -10,9 +10,9 @@ interface Props {
 function Card({ title, description, imgUrl }: Props) {
   return (
     <CardWrapper>
-        <ImageWrapper>
-            <Image src={imgUrl} alt={title} />
-        </ImageWrapper>
+      <ImageWrapper>
+        <Image src={imgUrl} alt={title} />
+      </ImageWrapper>
       <Body>
         <Title>{title}</Title>
         <p>{description}</p>

@@ -1,13 +1,11 @@
 import React from 'react'
 
 interface Props {
-  error: Error | null
+  message: string
 }
 
-function ErrorMessage(props: Props) {
-  const { error } = props
-
-  return <p role="alert">{error?.message}</p>
+function ErrorMessage({ message }: Props) {
+  return <p role="alert">{message}</p>
 }
 
 export default ErrorMessage

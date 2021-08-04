@@ -11,7 +11,7 @@ export const Image = styled.img`
 
 export const ImageWrapper = styled.div`
   width: 100%;
-  padding-top: 66.66%; 
+  padding-top: 66.66%;
   position: relative;
   overflow: hidden;
 `
@@ -22,7 +22,7 @@ export const CardWrapper = styled.div`
   overflow: hidden;
   border-radius: 5px;
   max-width: 400px;
-  
+
   &:hover {
     ${Image} {
       transform: scale(1.1);
