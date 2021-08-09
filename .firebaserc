@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "foodie-f9f5e"
+    "default": "foodie-f9f5e",
+    "staging": "foodie-f9f5e",
+    "prod": "foodie-f9f5e"
   }
 }

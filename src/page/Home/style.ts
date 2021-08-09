@@ -4,6 +4,7 @@ export const FoodMenuWrapper = styled.ul`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-gap: 24px;
+  list-style: none;
 `
 
 export const HomePageLayout = styled.div`
