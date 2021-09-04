@@ -31,7 +31,11 @@ jobs:
         run: npm install
 
       - name: Run the tests
-        run: npm test
+        run: npm test -- --coverage
         env:
           REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
           REACT_APP_API_KEY: ${{ secrets.REACT_APP_API_KEY }}
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
