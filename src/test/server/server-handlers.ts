@@ -3,7 +3,7 @@ import menuData from '../data/menu-data.json'
 import burgerMenuData from '../data/menu-burger-data.json'
 import notFoundMenuData from '../data/menu-not-found.json'
 
-const apiUrl = process.env.REACT_APP_API_URL
+const apiUrl = 'https://api.spoonacular.com/food/menuItems'
 
 export const handlers = [
   rest.get(`${apiUrl}/search`, async (req, res, ctx) => {
